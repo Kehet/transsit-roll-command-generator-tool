@@ -3,41 +3,41 @@ import { defineStore } from 'pinia'
 
 // Define the interface for the settings structure
 export interface Settings {
-  voimakkuus: number;
-  ketteryys: number;
-  kestavyys: number;
-  karismaattisuus: number;
-  manipulaatio: number;
-  havainnointi: number;
-  alykkyys: number;
-  viisaus: number;
-  empatia: number;
-  harhauttaminen: number;
-  katuviisaus: number;
-  suostuttelu: number;
-  tappeleminen: number;
-  uhkailu: number;
-  urheilullisuus: number;
-  valppaus: number;
-  vaistaminen: number;
-  ajaminen: number;
-  erataidot: number;
-  esiintyminen: number;
-  johtajuus: number;
-  kantamaaseet: number;
-  kadentaidot: number;
-  lahiaseet: number;
-  tiirikointi: number;
-  vaivihkaisuus: number;
-  arvoitukset: number;
-  historia: number;
-  laki: number;
-  luonto: number;
-  laaketiede: number;
-  perimatieto: number;
-  politiikka: number;
-  teknologia: number;
-  tutkinta: number;
+  voimakkuus: number
+  ketteryys: number
+  kestavyys: number
+  karismaattisuus: number
+  manipulaatio: number
+  havainnointi: number
+  alykkyys: number
+  viisaus: number
+  empatia: number
+  harhauttaminen: number
+  katuviisaus: number
+  suostuttelu: number
+  tappeleminen: number
+  uhkailu: number
+  urheilullisuus: number
+  valppaus: number
+  vaistaminen: number
+  ajaminen: number
+  erataidot: number
+  esiintyminen: number
+  johtajuus: number
+  kantamaaseet: number
+  kadentaidot: number
+  lahiaseet: number
+  tiirikointi: number
+  vaivihkaisuus: number
+  arvoitukset: number
+  historia: number
+  laki: number
+  luonto: number
+  laaketiede: number
+  perimatieto: number
+  politiikka: number
+  teknologia: number
+  tutkinta: number
 }
 
 // Use the interface as a type hint for the settings variable
@@ -87,9 +87,13 @@ export const useSettingsStore = defineStore('settings', () => {
     }
   })
 
-  watch(settings, (newSettings) => {
-    localStorage.setItem('settings', JSON.stringify(newSettings))
-  }, { deep: true })
+  watch(
+    settings,
+    (newSettings) => {
+      localStorage.setItem('settings', JSON.stringify(newSettings))
+    },
+    { deep: true }
+  )
 
   return { settings }
 })

@@ -7,7 +7,7 @@ import { ref } from 'vue'
 
 const settingsStore = useSettingsStore()
 
-const selected = ref<string[]>([])
+const selected = ref<Array<keyof Settings>>([])
 const search = ref<number | null>(null)
 
 const title = ref<string>('/roll 0d10')
@@ -65,7 +65,8 @@ const copyTitle = (selectedSearch: number | null) => {
   title.value = makeTitle()
 
   if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(title.value)
+    navigator.clipboard
+      .writeText(title.value)
       .then(() => {
         triggerToast('Copied to clipboard')
       })
@@ -79,23 +80,26 @@ const copyTitle = (selectedSearch: number | null) => {
 </script>
 
 <template>
-
-  <div class="mt-6 p-6 rounded border-2 border-gray-200 bg-gray-50 text-gray-400 dark:border-gray-700 dark:bg-gray-800">
-
+  <div
+    class="mt-6 p-6 rounded border-2 border-gray-200 bg-gray-50 text-gray-400 dark:border-gray-700 dark:bg-gray-800"
+  >
     <div class="flex flex-col gap-y-3 justify-items-stretch mb-6">
-      <input type="text"
-             class="text-5xl text-center mb-3 bg-gray-50 text-gray-400 dark:border-gray-700 dark:bg-gray-800"
-             :value="title"
-             ref="titleRef"
+      <input
+        type="text"
+        class="text-5xl text-center mb-3 bg-gray-50 text-gray-400 dark:border-gray-700 dark:bg-gray-800"
+        :value="title"
+        ref="titleRef"
       />
 
       <h2 class="text-2xl mb-2">Search</h2>
 
       <div class="flex gap-x-6">
-        <FenButton v-for="search in [...Array(11).keys()]"
-                   :key="search"
-                   @click="copyTitle(search)"
-                   class="w-full">
+        <FenButton
+          v-for="search in [...Array(11).keys()]"
+          :key="search"
+          @click="copyTitle(search)"
+          class="w-full"
+        >
           {{ search }}
         </FenButton>
       </div>
@@ -105,24 +109,24 @@ const copyTitle = (selectedSearch: number | null) => {
         <FenButton @click="reset" class="w-full">Clear Selection</FenButton>
       </div>
     </div>
-
   </div>
 
   <div
-    class="mt-6 p-6 rounded border-2 border-gray-200 bg-gray-50 text-gray-400 dark:border-gray-700 dark:bg-gray-800">
-
+    class="mt-6 p-6 rounded border-2 border-gray-200 bg-gray-50 text-gray-400 dark:border-gray-700 dark:bg-gray-800"
+  >
     <h1 class="text-3xl text-center mb-2">Ominaisuudet</h1>
 
     <div class="grid grid-cols-3 gap-x-6 mb-6">
-
       <div v-for="column in ominaisuudet" :key="column.name">
         <h2 class="text-2xl mb-2">{{ column.label }}</h2>
 
         <div class="flex flex-col gap-3">
-          <FenButton v-for="feature in column.features"
-                     :key="`${column.name}-${feature.name}`"
-                     @click.prevent="clickButton(feature.name)"
-                     :kind="selected.indexOf(feature.name) > -1 ? 'danger' : 'default'">
+          <FenButton
+            v-for="feature in column.features"
+            :key="`${column.name}-${feature.name}`"
+            @click.prevent="clickButton(feature.name)"
+            :kind="selected.indexOf(feature.name) > -1 ? 'danger' : 'default'"
+          >
             {{ feature.label }}: {{ settingsStore.settings[feature.name] }}
           </FenButton>
         </div>
@@ -131,20 +135,21 @@ const copyTitle = (selectedSearch: number | null) => {
   </div>
 
   <div
-    class="mt-6 p-6 rounded border-2 border-gray-200 bg-gray-50 text-gray-400 dark:border-gray-700 dark:bg-gray-800">
-
+    class="mt-6 p-6 rounded border-2 border-gray-200 bg-gray-50 text-gray-400 dark:border-gray-700 dark:bg-gray-800"
+  >
     <h1 class="text-3xl text-center mb-2">Kyvyt</h1>
 
     <div class="grid grid-cols-3 gap-x-6 mb-6">
-
       <div v-for="column in kyvyt" :key="column.name">
         <h2 class="text-2xl mb-2">{{ column.label }}</h2>
 
         <div class="flex flex-col gap-3">
-          <FenButton v-for="feature in column.features"
-                     :key="`${column.name}-${feature.name}`"
-                     @click.prevent="clickButton(feature.name)"
-                     :kind="selected.indexOf(feature.name) > -1 ? 'danger' : 'default'">
+          <FenButton
+            v-for="feature in column.features"
+            :key="`${column.name}-${feature.name}`"
+            @click.prevent="clickButton(feature.name)"
+            :kind="selected.indexOf(feature.name) > -1 ? 'danger' : 'default'"
+          >
             {{ feature.label }}: {{ settingsStore.settings[feature.name] }}
           </FenButton>
         </div>
@@ -156,10 +161,9 @@ const copyTitle = (selectedSearch: number | null) => {
       v-show="showToast"
       role="status"
       aria-live="polite"
-      class="fixed top-6 left-1/2 -translate-x-1/2 transform px-4 py-2 rounded bg-gray-900 text-white dark:bg-gray-700 shadow-lg">
+      class="fixed top-6 left-1/2 -translate-x-1/2 transform px-4 py-2 rounded bg-gray-900 text-white dark:bg-gray-700 shadow-lg"
+    >
       {{ toastMessage }}
     </div>
-
   </div>
-
 </template>

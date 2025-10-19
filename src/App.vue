@@ -1,6 +1,4 @@
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <!-- Page Container -->
@@ -31,11 +29,11 @@
           <div class="flex items-center gap-2 lg:gap-5">
             <!-- Desktop Navigation -->
             <nav class="hidden items-center gap-2 lg:flex">
-
-              <RouterLink to="/"
-                          class="group flex items-center gap-2 rounded-lg border px-3 py-2 border-transparent text-gray-800 hover:bg-teal-50 hover:text-teal-600 active:border-teal-100 dark:text-gray-200 dark:hover:bg-gray-700 dark:hover:text-white dark:active:border-gray-600"
-                          active-class="border-teal-100 bg-teal-50 text-teal-600 dark:border-transparent dark:bg-gray-700 dark:text-white"
-                          >
+              <RouterLink
+                to="/"
+                class="group flex items-center gap-2 rounded-lg border px-3 py-2 border-transparent text-gray-800 hover:bg-teal-50 hover:text-teal-600 active:border-teal-100 dark:text-gray-200 dark:hover:bg-gray-700 dark:hover:text-white dark:active:border-gray-600"
+                active-class="border-teal-100 bg-teal-50 text-teal-600 dark:border-transparent dark:bg-gray-700 dark:text-white"
+              >
                 <svg
                   class="hi-mini hi-home inline-block size-5"
                   xmlns="http://www.w3.org/2000/svg"
@@ -52,12 +50,11 @@
                 <span>Calculator</span>
               </RouterLink>
 
-
-              <RouterLink to="/settings"
-                          class="group flex items-center gap-2 rounded-lg border px-3 py-2 border-transparent text-gray-800 hover:bg-teal-50 hover:text-teal-600 active:border-teal-100 dark:text-gray-200 dark:hover:bg-gray-700 dark:hover:text-white dark:active:border-gray-600"
-                          active-class="border-teal-100 bg-teal-50 text-teal-600 dark:border-transparent dark:bg-gray-700 dark:text-white"
+              <RouterLink
+                to="/settings"
+                class="group flex items-center gap-2 rounded-lg border px-3 py-2 border-transparent text-gray-800 hover:bg-teal-50 hover:text-teal-600 active:border-teal-100 dark:text-gray-200 dark:hover:bg-gray-700 dark:hover:text-white dark:active:border-gray-600"
+                active-class="border-teal-100 bg-teal-50 text-teal-600 dark:border-transparent dark:bg-gray-700 dark:text-white"
               >
-
                 <svg
                   class="hi-mini hi-chart-bar inline-block size-5 opacity-25 group-hover:opacity-100"
                   xmlns="http://www.w3.org/2000/svg"
@@ -70,9 +67,7 @@
                   />
                 </svg>
                 <span>Settings</span>
-
               </RouterLink>
-
             </nav>
             <!-- END Desktop Navigation -->
           </div>
@@ -86,25 +81,18 @@
     <main id="page-content" class="flex max-w-full flex-auto flex-col">
       <!-- Page Section -->
       <div class="container mx-auto p-4 lg:p-8 xl:max-w-7xl">
-
         <RouterView />
-
       </div>
       <!-- END Page Section -->
     </main>
     <!-- END Page Content -->
 
     <!-- Page Footer -->
-    <footer
-      id="page-footer"
-      class="flex flex-none items-center bg-white dark:bg-gray-800"
-    >
+    <footer id="page-footer" class="flex flex-none items-center bg-white dark:bg-gray-800">
       <div
         class="container mx-auto flex flex-col px-4 text-center text-sm md:flex-row md:justify-between md:text-left lg:px-8 xl:max-w-7xl"
       >
-        <div class="pb-1 pt-4 md:pb-4">
-          &copy; Kehet
-        </div>
+        <div class="pb-1 pt-4 md:pb-4">&copy; Kehet</div>
       </div>
     </footer>
     <!-- END Page Footer -->

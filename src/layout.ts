@@ -1,16 +1,15 @@
-
 import type { Settings } from '@/stores/settings'
 
 type Feature = {
-  label: string;
-  name: keyof Settings;
-};
+  label: string
+  name: keyof Settings
+}
 
 type MainCategory = {
-  label: string;
-  name: string;
-  features: Feature[];
-};
+  label: string
+  name: string
+  features: Feature[]
+}
 
 export const ominaisuudet: MainCategory[] = [
   {
@@ -63,7 +62,7 @@ export const ominaisuudet: MainCategory[] = [
       }
     ]
   }
-];
+]
 
 export const kyvyt: MainCategory[] = [
   {
@@ -72,41 +71,41 @@ export const kyvyt: MainCategory[] = [
     features: [
       {
         label: 'Empatia',
-        name: 'empatia',
+        name: 'empatia'
       },
       {
         label: 'Harhauttaminen',
-        name: 'harhauttaminen',
+        name: 'harhauttaminen'
       },
       {
         label: 'Katuviisaus',
-        name: 'katuviisaus',
+        name: 'katuviisaus'
       },
       {
         label: 'Suostuttelu',
-        name: 'suostuttelu',
+        name: 'suostuttelu'
       },
       {
         label: 'Tappeleminen',
-        name: 'tappeleminen',
+        name: 'tappeleminen'
       },
       {
         label: 'Uhkailu',
-        name: 'uhkailu',
+        name: 'uhkailu'
       },
       {
         label: 'Urheilullisuus',
-        name: 'urheilullisuus',
+        name: 'urheilullisuus'
       },
       {
         label: 'Valppaus',
-        name: 'valppaus',
+        name: 'valppaus'
       },
       {
         label: 'Vaistaminen',
-        name: 'vaistaminen',
-      },
-    ],
+        name: 'vaistaminen'
+      }
+    ]
   },
   {
     label: 'Taidot',
@@ -114,41 +113,41 @@ export const kyvyt: MainCategory[] = [
     features: [
       {
         label: 'Ajaminen',
-        name: 'ajaminen',
+        name: 'ajaminen'
       },
       {
         label: 'Erätaidot',
-        name: 'erataidot',
+        name: 'erataidot'
       },
       {
         label: 'Esiintyminen',
-        name: 'esiintyminen',
+        name: 'esiintyminen'
       },
       {
         label: 'Johtajuus',
-        name: 'johtajuus',
+        name: 'johtajuus'
       },
       {
         label: 'Kantama-aseet',
-        name: 'kantamaaseet',
+        name: 'kantamaaseet'
       },
       {
         label: 'Kädentaidot',
-        name: 'kadentaidot',
+        name: 'kadentaidot'
       },
       {
         label: 'Lähiaseet',
-        name: 'lahiaseet',
+        name: 'lahiaseet'
       },
       {
         label: 'Tiirikointi',
-        name: 'tiirikointi',
+        name: 'tiirikointi'
       },
       {
         label: 'Vaivihkaisuus',
-        name: 'vaivihkaisuus',
-      },
-    ],
+        name: 'vaivihkaisuus'
+      }
+    ]
   },
   {
     label: 'Tiedot',
@@ -156,42 +155,40 @@ export const kyvyt: MainCategory[] = [
     features: [
       {
         label: 'Arvoitukset',
-        name: 'arvoitukset',
+        name: 'arvoitukset'
       },
       {
         label: 'Historia',
-        name: 'historia',
+        name: 'historia'
       },
       {
         label: 'Laki',
-        name: 'laki',
+        name: 'laki'
       },
       {
         label: 'Luonto',
-        name: 'luonto',
+        name: 'luonto'
       },
       {
         label: 'Lääketiede',
-        name: 'laaketiede',
+        name: 'laaketiede'
       },
       {
         label: 'Perimätieto',
-        name: 'perimatieto',
+        name: 'perimatieto'
       },
       {
         label: 'Politiikka',
-        name: 'politiikka',
+        name: 'politiikka'
       },
       {
         label: 'Teknologia',
-        name: 'teknologia',
+        name: 'teknologia'
       },
       {
         label: 'Tutkinta',
-        name: 'tutkinta',
-      },
-    ],
-  },
-];
-
-
+        name: 'tutkinta'
+      }
+    ]
+  }
+]
