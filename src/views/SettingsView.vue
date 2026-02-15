@@ -13,6 +13,9 @@ const clearSettings = () => {
     settingsStore.settings[key as keyof Settings] = 0
   })
 
+  localStorage.removeItem('settings')
+  settingsStore.isLoadedFromLocalStorage = false
+
   window.alert('Settings have been cleared successfully.')
 }
 

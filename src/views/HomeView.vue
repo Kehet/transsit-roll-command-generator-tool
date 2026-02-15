@@ -81,6 +81,17 @@ const copyTitle = (selectedSearch: number | null) => {
 
 <template>
   <div
+    v-if="!settingsStore.isLoadedFromLocalStorage"
+    class="mt-6 p-6 rounded border-yellow-200 bg-yellow-50 text-yellow-800 dark:border-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-200"
+  >
+    <p class="font-bold mb-2">Huomio!</p>
+    <p>
+      Asetuksia ei ole vielä tallennettu. Käy asettamassa hahmosi ominaisuudet ja kyvyt
+      <RouterLink to="/settings" class="underline font-semibold">asetussivulla</RouterLink>, jotta rollauskomento lasketaan oikein.
+    </p>
+  </div>
+
+  <div
     class="mt-6 p-6 rounded border-gray-200 bg-gray-50 text-gray-400 dark:border-gray-700 dark:bg-gray-800"
   >
     <div class="flex flex-col gap-y-3 justify-items-stretch mb-6">

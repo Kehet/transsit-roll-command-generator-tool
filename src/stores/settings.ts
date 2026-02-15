@@ -42,6 +42,7 @@ export interface Settings {
 
 // Use the interface as a type hint for the settings variable
 export const useSettingsStore = defineStore('settings', () => {
+  const isLoadedFromLocalStorage = ref<boolean>(false)
   const settings = ref<Settings>({
     voimakkuus: 0,
     ketteryys: 0,
@@ -84,6 +85,7 @@ export const useSettingsStore = defineStore('settings', () => {
     const savedSettings = localStorage.getItem('settings')
     if (savedSettings) {
       settings.value = JSON.parse(savedSettings)
+      isLoadedFromLocalStorage.value = true
     }
   })
 
@@ -91,9 +93,10 @@ export const useSettingsStore = defineStore('settings', () => {
     settings,
     (newSettings) => {
       localStorage.setItem('settings', JSON.stringify(newSettings))
+      isLoadedFromLocalStorage.value = true
     },
     { deep: true }
   )
 
-  return { settings }
+  return { settings, isLoadedFromLocalStorage }
 })
