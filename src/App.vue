@@ -4,8 +4,22 @@
   <!-- Page Container -->
   <div
     id="page-container"
-    class="mx-auto flex min-h-dvh w-full min-w-[320px] flex-col bg-gray-100 dark:bg-gray-900 dark:text-gray-100"
+    class="relative mx-auto flex min-h-dvh w-full min-w-[320px] flex-col bg-gray-100 dark:bg-gray-900 dark:text-gray-100"
   >
+    <!-- GitHub Ribbon -->
+    <a
+      href="https://github.com/Kehet/transsit-roll-command-generator-tool"
+      target="_blank"
+      class="absolute right-0 top-0 z-50 block h-32 w-32 overflow-hidden"
+      aria-label="View source on GitHub"
+    >
+      <div
+        class="absolute right-[-35px] top-[32px] w-[180px] rotate-45 bg-teal-600 py-1 text-center text-sm text-white shadow-md transition-colors hover:bg-teal-500"
+      >
+        GitHub
+      </div>
+    </a>
+    <!-- END GitHub Ribbon -->
     <!-- Page Header -->
     <header
       id="page-header"
@@ -92,7 +106,9 @@
       <div
         class="container mx-auto flex flex-col px-4 text-center text-sm md:flex-row md:justify-between md:text-left lg:px-8 xl:max-w-7xl"
       >
-        <div class="pb-1 pt-4 md:pb-4">&copy; Kehet</div>
+        <div class="pb-1 pt-4 md:pb-4">
+          &copy; Kehet
+        </div>
       </div>
     </footer>
     <!-- END Page Footer -->
