@@ -93,18 +93,18 @@ const copyTitle = (selectedSearch: number | null) => {
 
       <h2 class="text-2xl mb-2">Mitä haetaan</h2>
 
-      <div class="flex gap-x-6">
+      <div class="flex flex-wrap gap-2 md:gap-x-6">
         <FenButton
           v-for="search in [...Array(11).keys()]"
           :key="search"
           @click="copyTitle(search)"
-          class="w-full"
+          class="flex-1 min-w-[3rem]"
         >
           {{ search }}
         </FenButton>
       </div>
 
-      <div class="flex gap-x-6">
+      <div class="flex flex-col sm:flex-row gap-2 md:gap-x-6">
         <FenButton @click="copyTitle(null)" class="w-full">Ilman hakua</FenButton>
         <FenButton @click="reset" class="w-full">Tyhjennä valinta</FenButton>
       </div>
@@ -116,7 +116,7 @@ const copyTitle = (selectedSearch: number | null) => {
   >
     <h1 class="text-3xl text-center mb-2">Ominaisuudet</h1>
 
-    <div class="grid grid-cols-3 gap-x-6 mb-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
       <div v-for="column in ominaisuudet" :key="column.name">
         <h2 class="text-2xl mb-2">{{ column.label }}</h2>
 
@@ -139,7 +139,7 @@ const copyTitle = (selectedSearch: number | null) => {
   >
     <h1 class="text-3xl text-center mb-2">Kyvyt</h1>
 
-    <div class="grid grid-cols-3 gap-x-6 mb-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
       <div v-for="column in kyvyt" :key="column.name">
         <h2 class="text-2xl mb-2">{{ column.label }}</h2>
 
