@@ -68,7 +68,7 @@ const copyTitle = (selectedSearch: number | null) => {
     navigator.clipboard
       .writeText(title.value)
       .then(() => {
-        triggerToast('Copied to clipboard')
+        triggerToast('Kopioitu leikepöydälle')
       })
       .catch(() => {
         alert('Failed to copy to clipboard.')
@@ -81,7 +81,7 @@ const copyTitle = (selectedSearch: number | null) => {
 
 <template>
   <div
-    class="mt-6 p-6 rounded border-2 border-gray-200 bg-gray-50 text-gray-400 dark:border-gray-700 dark:bg-gray-800"
+    class="mt-6 p-6 rounded border-gray-200 bg-gray-50 text-gray-400 dark:border-gray-700 dark:bg-gray-800"
   >
     <div class="flex flex-col gap-y-3 justify-items-stretch mb-6">
       <input
@@ -91,7 +91,7 @@ const copyTitle = (selectedSearch: number | null) => {
         ref="titleRef"
       />
 
-      <h2 class="text-2xl mb-2">Search</h2>
+      <h2 class="text-2xl mb-2">Mitä haetaan</h2>
 
       <div class="flex gap-x-6">
         <FenButton
@@ -105,14 +105,14 @@ const copyTitle = (selectedSearch: number | null) => {
       </div>
 
       <div class="flex gap-x-6">
-        <FenButton @click="copyTitle(null)" class="w-full">No search</FenButton>
-        <FenButton @click="reset" class="w-full">Clear Selection</FenButton>
+        <FenButton @click="copyTitle(null)" class="w-full">Ilman hakua</FenButton>
+        <FenButton @click="reset" class="w-full">Tyhjennä valinta</FenButton>
       </div>
     </div>
   </div>
 
   <div
-    class="mt-6 p-6 rounded border-2 border-gray-200 bg-gray-50 text-gray-400 dark:border-gray-700 dark:bg-gray-800"
+    class="mt-6 p-6 rounded border-gray-200 bg-gray-50 text-gray-400 dark:border-gray-700 dark:bg-gray-800"
   >
     <h1 class="text-3xl text-center mb-2">Ominaisuudet</h1>
 
@@ -122,7 +122,7 @@ const copyTitle = (selectedSearch: number | null) => {
 
         <div class="flex flex-col gap-3">
           <FenButton
-            v-for="feature in column.features"
+            v-for="feature in column.features.sort((a, b) => a.label.localeCompare(b.label, 'fi'))"
             :key="`${column.name}-${feature.name}`"
             @click.prevent="clickButton(feature.name)"
             :kind="selected.indexOf(feature.name) > -1 ? 'danger' : 'default'"
@@ -135,7 +135,7 @@ const copyTitle = (selectedSearch: number | null) => {
   </div>
 
   <div
-    class="mt-6 p-6 rounded border-2 border-gray-200 bg-gray-50 text-gray-400 dark:border-gray-700 dark:bg-gray-800"
+    class="mt-6 p-6 rounded border-gray-200 bg-gray-50 text-gray-400 dark:border-gray-700 dark:bg-gray-800"
   >
     <h1 class="text-3xl text-center mb-2">Kyvyt</h1>
 
@@ -145,7 +145,7 @@ const copyTitle = (selectedSearch: number | null) => {
 
         <div class="flex flex-col gap-3">
           <FenButton
-            v-for="feature in column.features"
+            v-for="feature in column.features.sort((a, b) => a.label.localeCompare(b.label, 'fi'))"
             :key="`${column.name}-${feature.name}`"
             @click.prevent="clickButton(feature.name)"
             :kind="selected.indexOf(feature.name) > -1 ? 'danger' : 'default'"

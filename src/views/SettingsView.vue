@@ -54,20 +54,23 @@ const fileInputRef = ref<HTMLInputElement | null>(null)
 <template>
   <main>
     <div
-      class="mt-6 p-6 rounded border-2 border-gray-200 bg-gray-50 text-gray-400 dark:border-gray-700 dark:bg-gray-800"
+      class="mt-6 p-6 rounded border-gray-200 bg-gray-50 text-gray-400 dark:border-gray-700 dark:bg-gray-800"
     >
+      <h1 class="text-3xl text-center mb-2">Vie asetukset</h1>
+
       <div class="my-6 text-center flex flex-col items-center">
         <div class="flex gap-x-3">
-          <fen-button @click="clearSettings" class="mb-4">Clear Settings</fen-button>
-          <fen-button @click="exportSettings" class="mb-4">Export Settings</fen-button>
+          <fen-button @click="clearSettings" class="mb-4">Tyhjennä asetukset</fen-button>
+          <fen-button @click="exportSettings" class="mb-4">Vie asetukset</fen-button>
         </div>
 
+        <h1 class="text-3xl mb-2">Tuo asetukset</h1>
         <input type="file" @change="importSettings" ref="fileInputRef" />
       </div>
     </div>
 
     <div
-      class="mt-6 p-6 rounded border-2 border-gray-200 bg-gray-50 text-gray-400 dark:border-gray-700 dark:bg-gray-800"
+      class="mt-6 p-6 rounded border-gray-200 bg-gray-50 text-gray-400 dark:border-gray-700 dark:bg-gray-800"
     >
       <h1 class="text-3xl text-center mb-2">Ominaisuudet</h1>
 
@@ -77,7 +80,7 @@ const fileInputRef = ref<HTMLInputElement | null>(null)
 
           <div
             class="flex"
-            v-for="feature in column.features"
+            v-for="feature in column.features.sort((a, b) => a.label.localeCompare(b.label, 'fi'))"
             :key="`${column.name}-${feature.name}`"
           >
             <FenLabel class="flex-grow" :for="feature.name">{{ feature.label }}</FenLabel>
@@ -103,7 +106,7 @@ const fileInputRef = ref<HTMLInputElement | null>(null)
 
           <div
             class="flex"
-            v-for="feature in column.features"
+            v-for="feature in column.features.sort((a, b) => a.label.localeCompare(b.label, 'fi'))"
             :key="`${column.name}-${feature.name}`"
           >
             <FenLabel class="flex-grow" :for="feature.name">{{ feature.label }}</FenLabel>

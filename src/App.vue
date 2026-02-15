@@ -19,7 +19,7 @@
             <span
               class="group inline-flex items-center gap-2 text-lg font-bold tracking-wide text-gray-900 hover:text-gray-600 dark:text-gray-100 dark:hover:text-gray-300"
             >
-              Transsit Roll Command Generator Tool
+              Transsit Rollaustyökalu
             </span>
             <!-- END Logo -->
           </div>
@@ -31,7 +31,7 @@
             <nav class="hidden items-center gap-2 lg:flex">
               <RouterLink
                 to="/"
-                class="group flex items-center gap-2 rounded-lg border px-3 py-2 border-transparent text-gray-800 hover:bg-teal-50 hover:text-teal-600 active:border-teal-100 dark:text-gray-200 dark:hover:bg-gray-700 dark:hover:text-white dark:active:border-gray-600"
+                class="group flex items-center gap-2 rounded border px-3 py-2 border-transparent text-gray-800 hover:bg-teal-50 hover:text-teal-600 active:border-teal-100 dark:text-gray-200 dark:hover:bg-gray-700 dark:hover:text-white dark:active:border-gray-600"
                 active-class="border-teal-100 bg-teal-50 text-teal-600 dark:border-transparent dark:bg-gray-700 dark:text-white"
               >
                 <svg
@@ -47,12 +47,12 @@
                     clip-rule="evenodd"
                   />
                 </svg>
-                <span>Calculator</span>
+                <span>Työkalu</span>
               </RouterLink>
 
               <RouterLink
                 to="/settings"
-                class="group flex items-center gap-2 rounded-lg border px-3 py-2 border-transparent text-gray-800 hover:bg-teal-50 hover:text-teal-600 active:border-teal-100 dark:text-gray-200 dark:hover:bg-gray-700 dark:hover:text-white dark:active:border-gray-600"
+                class="group flex items-center gap-2 rounded border px-3 py-2 border-transparent text-gray-800 hover:bg-teal-50 hover:text-teal-600 active:border-teal-100 dark:text-gray-200 dark:hover:bg-gray-700 dark:hover:text-white dark:active:border-gray-600"
                 active-class="border-teal-100 bg-teal-50 text-teal-600 dark:border-transparent dark:bg-gray-700 dark:text-white"
               >
                 <svg
@@ -66,7 +66,7 @@
                     d="M15.5 2A1.5 1.5 0 0014 3.5v13a1.5 1.5 0 001.5 1.5h1a1.5 1.5 0 001.5-1.5v-13A1.5 1.5 0 0016.5 2h-1zM9.5 6A1.5 1.5 0 008 7.5v9A1.5 1.5 0 009.5 18h1a1.5 1.5 0 001.5-1.5v-9A1.5 1.5 0 0010.5 6h-1zM3.5 10A1.5 1.5 0 002 11.5v5A1.5 1.5 0 003.5 18h1A1.5 1.5 0 006 16.5v-5A1.5 1.5 0 004.5 10h-1z"
                   />
                 </svg>
-                <span>Settings</span>
+                <span>Asetukset</span>
               </RouterLink>
             </nav>
             <!-- END Desktop Navigation -->
