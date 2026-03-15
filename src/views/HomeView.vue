@@ -192,13 +192,28 @@ const copyTitle = (selectedSearch: number | null) => {
     </div>
 
     <!-- Simple toast -->
-    <div
-      v-show="showToast"
-      role="status"
-      aria-live="polite"
-      class="fixed top-6 left-1/2 -translate-x-1/2 transform px-4 py-2 rounded bg-gray-900 text-white dark:bg-gray-700 shadow-lg"
-    >
-      {{ toastMessage }}
-    </div>
+    <Transition name="toast-fade">
+      <div
+        v-show="showToast"
+        role="status"
+        aria-live="polite"
+        class="fixed top-6 left-1/2 -translate-x-1/2 transform px-4 py-2 rounded bg-[var(--color12)] text-black dark:bg-[var(--color4)] dark:text-white shadow-lg"
+      >
+        {{ toastMessage }}
+      </div>
+    </Transition>
   </div>
 </template>
+
+<style scoped>
+.toast-fade-enter-active {
+  transition: opacity 0.3s ease;
+}
+.toast-fade-leave-active {
+  transition: opacity 0.8s ease;
+}
+.toast-fade-enter-from,
+.toast-fade-leave-to {
+  opacity: 0;
+}
+</style>
