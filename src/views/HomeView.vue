@@ -92,17 +92,17 @@ const copyTitle = (selectedSearch: number | null) => {
   </div>
 
   <div
-    class="mt-6 p-6 rounded border-gray-200 bg-gray-50 text-gray-400 dark:border-gray-700 dark:bg-gray-800"
+    class="mt-6 p-6 rounded border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-gray-800"
   >
     <div class="flex flex-col gap-y-3 justify-items-stretch mb-6">
       <input
         type="text"
-        class="text-5xl text-center mb-3 bg-gray-50 text-gray-400 dark:border-gray-700 dark:bg-gray-800"
+        class="text-5xl text-center mb-3 bg-gray-50 dark:border-gray-700 dark:bg-gray-800"
         :value="title"
         ref="titleRef"
       />
 
-      <p class="text-center text-lg text-gray-500 dark:text-gray-400">
+      <p class="text-center text-lg ">
         Valitse ensin haluttavat ominaisuudet ja kyvyt ja lopuksi mitä haetaan
       </p>
 
@@ -127,7 +127,7 @@ const copyTitle = (selectedSearch: number | null) => {
   </div>
 
   <div
-    class="mt-6 p-6 rounded border-gray-200 bg-gray-50 text-gray-400 dark:border-gray-700 dark:bg-gray-800"
+    class="mt-6 p-6 rounded border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-gray-800"
   >
     <h1 class="text-3xl text-center mb-2">Ominaisuudet</h1>
 
@@ -149,7 +149,7 @@ const copyTitle = (selectedSearch: number | null) => {
                   v-for="n in 5"
                   :key="n"
                   class="inline-block w-2.5 h-2.5 rounded-full"
-                  :class="n <= settingsStore.settings[feature.name] ? 'bg-yellow-400' : 'bg-gray-500/30'"
+                  :class="n <= settingsStore.settings[feature.name] ? 'bg-[var(--color11)]' : 'bg-gray-500'"
                 />
               </span>
             </span>
@@ -160,7 +160,7 @@ const copyTitle = (selectedSearch: number | null) => {
   </div>
 
   <div
-    class="mt-6 p-6 rounded border-gray-200 bg-gray-50 text-gray-400 dark:border-gray-700 dark:bg-gray-800"
+    class="mt-6 p-6 rounded border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-gray-800"
   >
     <h1 class="text-3xl text-center mb-2">Kyvyt</h1>
 
@@ -182,7 +182,7 @@ const copyTitle = (selectedSearch: number | null) => {
                   v-for="n in 5"
                   :key="n"
                   class="inline-block w-2.5 h-2.5 rounded-full"
-                  :class="n <= settingsStore.settings[feature.name] ? 'bg-yellow-400' : 'bg-gray-500/30'"
+                  :class="n <= settingsStore.settings[feature.name] ? 'bg-[var(--color11)]' : 'bg-gray-500'"
                 />
               </span>
             </span>

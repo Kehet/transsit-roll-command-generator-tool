@@ -57,7 +57,7 @@ const fileInputRef = ref<HTMLInputElement | null>(null)
 <template>
   <main>
     <div
-      class="mt-6 p-6 rounded border-gray-200 bg-gray-50 text-gray-400 dark:border-gray-700 dark:bg-gray-800"
+      class="mt-6 p-6 rounded border-gray-200 bg-gray-50  dark:border-gray-700 dark:bg-gray-800"
     >
       <h1 class="text-3xl text-center mb-2">Vie asetukset</h1>
 
@@ -73,7 +73,7 @@ const fileInputRef = ref<HTMLInputElement | null>(null)
     </div>
 
     <div
-      class="mt-6 p-6 rounded border-gray-200 bg-gray-50 text-gray-400 dark:border-gray-700 dark:bg-gray-800"
+      class="mt-6 p-6 rounded border-gray-200 bg-gray-50  dark:border-gray-700 dark:bg-gray-800"
     >
       <h1 class="text-3xl text-center mb-2">Ominaisuudet</h1>
 

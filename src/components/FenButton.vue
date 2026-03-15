@@ -14,10 +14,10 @@ withDefaults(
 <template>
   <button
     :type="type"
-    class="px-6 py-2 font-medium tracking-wide text-white transition-colors duration-300 transform rounded focus:outline-none focus:ring focus:ring-opacity-80"
+    class="px-6 py-2 font-medium tracking-wide text-black dark:text-white transition-colors duration-300 transform rounded focus:outline-none focus:ring focus:ring-opacity-80"
     :class="{
-      'bg-blue-600 hover:bg-blue-500 focus:ring-blue-300': kind === 'default',
-      'bg-red-600 hover:bg-red-500 focus:ring-red-300': kind === 'danger'
+      'bg-[var(--color12)] dark:bg-[var(--color4)] hover:brightness-110 focus:ring-[var(--color12)] dark:focus:ring-[var(--color4)]': kind === 'default',
+      'bg-[var(--color9)] dark:bg-[var(--color1)] hover:brightness-110 focus:ring-[var(--color9)] dark:focus:ring-[var(--color1)]': kind === 'danger'
     }"
   >
     <slot />
