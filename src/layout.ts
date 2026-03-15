@@ -17,12 +17,12 @@ export const ominaisuudet: MainCategory[] = [
     name: 'fyysisyys',
     features: [
       {
-        label: 'Ketteryys',
-        name: 'ketteryys'
-      },
-      {
         label: 'Voimakkuus',
         name: 'voimakkuus'
+      },
+      {
+        label: 'Ketteryys',
+        name: 'ketteryys'
       },
       {
         label: 'Kestävyys',
@@ -102,7 +102,7 @@ export const kyvyt: MainCategory[] = [
         name: 'valppaus'
       },
       {
-        label: 'Vaistaminen',
+        label: 'Väistaminen',
         name: 'vaistaminen'
       }
     ]

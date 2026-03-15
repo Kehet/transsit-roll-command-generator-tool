@@ -102,6 +102,10 @@ const copyTitle = (selectedSearch: number | null) => {
         ref="titleRef"
       />
 
+      <p class="text-center text-lg text-gray-500 dark:text-gray-400">
+        Valitse ensin haluttavat ominaisuudet ja kyvyt ja lopuksi mitä haetaan
+      </p>
+
       <h2 class="text-2xl mb-2">Mitä haetaan</h2>
 
       <div class="flex flex-wrap gap-2 md:gap-x-6">
@@ -138,7 +142,17 @@ const copyTitle = (selectedSearch: number | null) => {
             @click.prevent="clickButton(feature.name)"
             :kind="selected.indexOf(feature.name) > -1 ? 'danger' : 'default'"
           >
-            {{ feature.label }}: {{ settingsStore.settings[feature.name] }}
+            <span class="flex items-center justify-between w-full gap-2">
+              <span>{{ feature.label }}</span>
+              <span class="flex gap-1">
+                <span
+                  v-for="n in 5"
+                  :key="n"
+                  class="inline-block w-2.5 h-2.5 rounded-full"
+                  :class="n <= settingsStore.settings[feature.name] ? 'bg-yellow-400' : 'bg-gray-500/30'"
+                />
+              </span>
+            </span>
           </FenButton>
         </div>
       </div>
@@ -161,7 +175,17 @@ const copyTitle = (selectedSearch: number | null) => {
             @click.prevent="clickButton(feature.name)"
             :kind="selected.indexOf(feature.name) > -1 ? 'danger' : 'default'"
           >
-            {{ feature.label }}: {{ settingsStore.settings[feature.name] }}
+            <span class="flex items-center justify-between w-full gap-2">
+              <span>{{ feature.label }}</span>
+              <span class="flex gap-1">
+                <span
+                  v-for="n in 5"
+                  :key="n"
+                  class="inline-block w-2.5 h-2.5 rounded-full"
+                  :class="n <= settingsStore.settings[feature.name] ? 'bg-yellow-400' : 'bg-gray-500/30'"
+                />
+              </span>
+            </span>
           </FenButton>
         </div>
       </div>
