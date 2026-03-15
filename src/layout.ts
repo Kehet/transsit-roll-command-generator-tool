@@ -102,7 +102,7 @@ export const kyvyt: MainCategory[] = [
         name: 'valppaus'
       },
       {
-        label: 'Väistaminen',
+        label: 'Väistäminen',
         name: 'vaistaminen'
       }
     ]
