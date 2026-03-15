@@ -149,7 +149,7 @@ const copyTitle = (selectedSearch: number | null) => {
                   v-for="n in 5"
                   :key="n"
                   class="inline-block w-2.5 h-2.5 rounded-full"
-                  :class="n <= settingsStore.settings[feature.name] ? 'bg-[var(--color11)]' : 'bg-gray-500'"
+                  :class="n <= settingsStore.settings[feature.name] ? 'bg-[var(--color11)]' : 'bg-gray-800'"
                 />
               </span>
             </span>
@@ -182,7 +182,7 @@ const copyTitle = (selectedSearch: number | null) => {
                   v-for="n in 5"
                   :key="n"
                   class="inline-block w-2.5 h-2.5 rounded-full"
-                  :class="n <= settingsStore.settings[feature.name] ? 'bg-[var(--color11)]' : 'bg-gray-500'"
+                  :class="n <= settingsStore.settings[feature.name] ? 'bg-[var(--color11)]' : 'bg-gray-800'"
                 />
               </span>
             </span>
