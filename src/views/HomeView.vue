@@ -122,6 +122,10 @@ const copyTitle = (selectedSearch: number | null) => {
         Valitse ensin haluttavat ominaisuudet ja kyvyt ja lopuksi mitä haetaan
       </p>
 
+      <p class="text-center text-sm text-gray-400 dark:text-gray-500">
+        Vinkki: paina <kbd class="px-1 py-0.5 rounded bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300 font-mono text-xs">.</kbd> avataksesi pikavalinnan
+      </p>
+
       <h2 class="text-2xl mb-2">Mitä haetaan</h2>
 
       <div class="flex flex-wrap gap-2 md:gap-x-6">
@@ -214,13 +218,11 @@ const copyTitle = (selectedSearch: number | null) => {
     <QuickMenu
       :open="menuOpen"
       :selected="selected"
+      :search="search"
       @close="menuOpen = false"
-      @toggle="
-        (name) => {
-          clickButton(name)
-          menuOpen = false
-        }
-      "
+      @toggle="(name) => { clickButton(name) }"
+      @set-search="(value) => { copyTitle(value); menuOpen = false }"
+      @reset="reset"
     />
 
     <!-- Simple toast -->
