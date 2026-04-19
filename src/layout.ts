@@ -21,6 +21,29 @@ type Preset = {
   onAfterApply?: (ctx: PresetContext) => void
 }
 
+export type WeaponCategory = 'melee' | 'ranged'
+
+export type Weapon = {
+  name: string
+  category: WeaponCategory
+  hitDifficulty: number
+  damageDice: number
+  damageDifficulty: number
+}
+
+export const weapons: Weapon[] = [
+  { name: 'Nuija',        category: 'melee',  hitDifficulty: 4, damageDice: 1, damageDifficulty: 6 },
+  { name: 'Puukko',       category: 'melee',  hitDifficulty: 5, damageDice: 1, damageDifficulty: 6 },
+  { name: 'Sirppi',       category: 'melee',  hitDifficulty: 5, damageDice: 1, damageDifficulty: 5 },
+  { name: 'Lyhyt miekka', category: 'melee',  hitDifficulty: 6, damageDice: 1, damageDifficulty: 5 },
+  { name: 'Pitkämiekka',  category: 'melee',  hitDifficulty: 6, damageDice: 2, damageDifficulty: 5 },
+  { name: 'Ilmakivääri',  category: 'ranged', hitDifficulty: 4, damageDice: 1, damageDifficulty: 6 },
+  { name: 'Lyhytjousi',   category: 'ranged', hitDifficulty: 5, damageDice: 1, damageDifficulty: 6 },
+  { name: 'Varsijousi',   category: 'ranged', hitDifficulty: 5, damageDice: 2, damageDifficulty: 6 },
+  { name: 'Haulikko',     category: 'ranged', hitDifficulty: 5, damageDice: 3, damageDifficulty: 5 },
+  { name: 'Pitkäjousi',   category: 'ranged', hitDifficulty: 6, damageDice: 3, damageDifficulty: 4 },
+]
+
 export const presets: Preset[] = [
   {
     label: 'Inikka',
@@ -42,14 +65,6 @@ export const presets: Preset[] = [
   {
     label: 'Nyrkkitappelu osum.',
     features: ['ketteryys', 'tappeleminen']
-  },
-  {
-    label: 'Lähiaseet osum.',
-    features: ['ketteryys', 'lahiaseet']
-  },
-  {
-    label: 'Kantama-aseet osum.',
-    features: ['ketteryys', 'kantamaaseet']
   },
 ]
 

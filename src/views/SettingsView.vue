@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import FenLabel from '@/components/FenLabel.vue'
 import FenInput from '@/components/FenInput.vue'
 import { type Settings, useSettingsStore } from '@/stores/settings'
-import { kyvyt, ominaisuudet } from '@/layout'
+import { kyvyt, ominaisuudet, weapons } from '@/layout'
 import FenButton from '@/components/FenButton.vue'
 
 const settingsStore = useSettingsStore()
@@ -20,7 +20,11 @@ const clearSettings = () => {
 }
 
 const exportSettings = () => {
-  const settingsJson = JSON.stringify(settingsStore.settings, null, 2)
+  const data = {
+    ...settingsStore.settings,
+    selectedWeapon: localStorage.getItem('selectedWeapon') ?? weapons[0].name,
+  }
+  const settingsJson = JSON.stringify(data, null, 2)
   const blob = new Blob([settingsJson], { type: 'application/json' })
   const url = URL.createObjectURL(blob)
 
@@ -40,7 +44,11 @@ const importSettings = (event: Event) => {
     reader.onload = (e) => {
       const result = e.target?.result as string
       try {
-        settingsStore.settings = JSON.parse(result)
+        const { selectedWeapon, ...settings } = JSON.parse(result)
+        settingsStore.settings = settings
+        if (selectedWeapon && weapons.find((w) => w.name === selectedWeapon)) {
+          localStorage.setItem('selectedWeapon', selectedWeapon)
+        }
         fileInput.value = ''
         window.alert('Settings imported successfully')
       } catch (error) {

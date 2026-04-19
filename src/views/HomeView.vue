@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { kyvyt, ominaisuudet, presets, type PresetContext } from '@/layout'
+import { kyvyt, ominaisuudet, presets, weapons, type PresetContext, type Weapon } from '@/layout'
 import type { Settings } from '@/stores/settings'
 import { useSettingsStore } from '@/stores/settings'
 import FenButton from '@/components/FenButton.vue'
 import QuickMenu from '@/components/QuickMenu.vue'
-import { onMounted, onUnmounted, ref } from 'vue'
+import { onMounted, onUnmounted, ref, watch } from 'vue'
 
 const settingsStore = useSettingsStore()
 
@@ -83,8 +83,40 @@ const handleKeydown = (e: KeyboardEvent) => {
   }
 }
 
-onMounted(() => window.addEventListener('keydown', handleKeydown))
+onMounted(() => {
+  window.addEventListener('keydown', handleKeydown)
+  const saved = localStorage.getItem('selectedWeapon')
+  if (saved) {
+    const found = weapons.find((w) => w.name === saved)
+    if (found) selectedWeapon.value = found
+  }
+})
 onUnmounted(() => window.removeEventListener('keydown', handleKeydown))
+
+const selectedWeapon = ref<Weapon>(weapons[0])
+watch(() => selectedWeapon.value.name, (name) => localStorage.setItem('selectedWeapon', name))
+
+const rollWeaponHit = () => {
+  const skillKey = selectedWeapon.value.category === 'melee' ? 'lahiaseet' : 'kantamaaseet'
+  selected.value = ['ketteryys', skillKey]
+  search.value = selectedWeapon.value.hitDifficulty
+  title.value = makeTitle()
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(title.value).then(() => triggerToast('Kopioitu leikepöydälle')).catch(() => alert('Failed to copy to clipboard.'))
+  } else {
+    alert('Copy to clipboard is not supported in this browser.')
+  }
+}
+
+const rollWeaponDamage = () => {
+  const w = selectedWeapon.value
+  title.value = `/roll ${w.damageDice}d10>${w.damageDifficulty}`
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(title.value).then(() => triggerToast('Kopioitu leikepöydälle')).catch(() => alert('Failed to copy to clipboard.'))
+  } else {
+    alert('Copy to clipboard is not supported in this browser.')
+  }
+}
 
 const copyTitle = (selectedSearch: number | null) => {
   search.value = selectedSearch
@@ -165,6 +197,28 @@ const copyTitle = (selectedSearch: number | null) => {
         >
           {{ preset.label }}
         </FenButton>
+      </div>
+
+      <h2 class="text-2xl mb-2">Tappelun pikavalinnat</h2>
+
+      <div class="flex flex-wrap gap-2 items-center">
+        <select
+          v-model="selectedWeapon"
+          class="bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded px-2 py-1 text-sm flex-1"
+        >
+          <optgroup label="Lähiaseet">
+            <option v-for="w in weapons.filter(w => w.category === 'melee')" :key="w.name" :value="w">
+              {{ w.name }}
+            </option>
+          </optgroup>
+          <optgroup label="Kantama-aseet">
+            <option v-for="w in weapons.filter(w => w.category === 'ranged')" :key="w.name" :value="w">
+              {{ w.name }}
+            </option>
+          </optgroup>
+        </select>
+        <FenButton @click="rollWeaponHit" class="flex-1">Osuma</FenButton>
+        <FenButton @click="rollWeaponDamage" class="flex-1">Lisävaurio</FenButton>
       </div>
     </div>
   </div>
