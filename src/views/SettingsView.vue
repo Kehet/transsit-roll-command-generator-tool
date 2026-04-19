@@ -56,9 +56,7 @@ const fileInputRef = ref<HTMLInputElement | null>(null)
 
 <template>
   <main>
-    <div
-      class="mt-6 p-6 rounded border-gray-200 bg-gray-50  dark:border-gray-700 dark:bg-gray-800"
-    >
+    <div class="mt-6 p-6 rounded border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-gray-800">
       <h1 class="text-3xl text-center mb-2">Vie asetukset</h1>
 
       <div class="my-6 text-center flex flex-col items-center">
@@ -72,9 +70,7 @@ const fileInputRef = ref<HTMLInputElement | null>(null)
       </div>
     </div>
 
-    <div
-      class="mt-6 p-6 rounded border-gray-200 bg-gray-50  dark:border-gray-700 dark:bg-gray-800"
-    >
+    <div class="mt-6 p-6 rounded border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-gray-800">
       <h1 class="text-3xl text-center mb-2">Ominaisuudet</h1>
 
       <div class="grid grid-cols-3 gap-x-6 mb-6">
@@ -82,7 +78,7 @@ const fileInputRef = ref<HTMLInputElement | null>(null)
           <h2 class="text-2xl mb-2">{{ column.label }}</h2>
 
           <div
-            class="flex"
+            class="flex items-center"
             v-for="feature in column.features.sort((a, b) => a.label.localeCompare(b.label, 'fi'))"
             :key="`${column.name}-${feature.name}`"
           >
@@ -108,7 +104,7 @@ const fileInputRef = ref<HTMLInputElement | null>(null)
           <h2 class="text-2xl mb-2">{{ column.label }}</h2>
 
           <div
-            class="flex"
+            class="flex items-center"
             v-for="feature in column.features.sort((a, b) => a.label.localeCompare(b.label, 'fi'))"
             :key="`${column.name}-${feature.name}`"
           >

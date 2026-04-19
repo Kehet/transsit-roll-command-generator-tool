@@ -3,7 +3,8 @@ import { kyvyt, ominaisuudet } from '@/layout'
 import type { Settings } from '@/stores/settings'
 import { useSettingsStore } from '@/stores/settings'
 import FenButton from '@/components/FenButton.vue'
-import { ref } from 'vue'
+import QuickMenu from '@/components/QuickMenu.vue'
+import { onMounted, onUnmounted, ref } from 'vue'
 
 const settingsStore = useSettingsStore()
 
@@ -60,6 +61,22 @@ const reset = () => {
   title.value = '/roll 0d10'
 }
 
+const menuOpen = ref<boolean>(false)
+
+const handleKeydown = (e: KeyboardEvent) => {
+  if (
+    e.key === '.' &&
+    !(e.target instanceof HTMLInputElement) &&
+    !(e.target instanceof HTMLTextAreaElement)
+  ) {
+    e.preventDefault()
+    menuOpen.value = true
+  }
+}
+
+onMounted(() => window.addEventListener('keydown', handleKeydown))
+onUnmounted(() => window.removeEventListener('keydown', handleKeydown))
+
 const copyTitle = (selectedSearch: number | null) => {
   search.value = selectedSearch
   title.value = makeTitle()
@@ -87,13 +104,12 @@ const copyTitle = (selectedSearch: number | null) => {
     <p class="font-bold mb-2">Huomio!</p>
     <p>
       Asetuksia ei ole vielä tallennettu. Käy asettamassa hahmosi ominaisuudet ja kyvyt
-      <RouterLink to="/settings" class="underline font-semibold">asetussivulla</RouterLink>, jotta rollauskomento lasketaan oikein.
+      <RouterLink to="/settings" class="underline font-semibold">asetussivulla</RouterLink>, jotta
+      rollauskomento lasketaan oikein.
     </p>
   </div>
 
-  <div
-    class="mt-6 p-6 rounded border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-gray-800"
-  >
+  <div class="mt-6 p-6 rounded border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-gray-800">
     <div class="flex flex-col gap-y-3 justify-items-stretch mb-6">
       <input
         type="text"
@@ -102,7 +118,7 @@ const copyTitle = (selectedSearch: number | null) => {
         ref="titleRef"
       />
 
-      <p class="text-center text-lg ">
+      <p class="text-center text-lg">
         Valitse ensin haluttavat ominaisuudet ja kyvyt ja lopuksi mitä haetaan
       </p>
 
@@ -126,9 +142,7 @@ const copyTitle = (selectedSearch: number | null) => {
     </div>
   </div>
 
-  <div
-    class="mt-6 p-6 rounded border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-gray-800"
-  >
+  <div class="mt-6 p-6 rounded border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-gray-800">
     <h1 class="text-3xl text-center mb-2">Ominaisuudet</h1>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
@@ -149,7 +163,11 @@ const copyTitle = (selectedSearch: number | null) => {
                   v-for="n in 5"
                   :key="n"
                   class="inline-block w-2.5 h-2.5 rounded-full"
-                  :class="n <= settingsStore.settings[feature.name] ? 'bg-[var(--color11)]' : 'bg-gray-800'"
+                  :class="
+                    n <= settingsStore.settings[feature.name]
+                      ? 'bg-[var(--color11)]'
+                      : 'bg-gray-800'
+                  "
                 />
               </span>
             </span>
@@ -159,9 +177,7 @@ const copyTitle = (selectedSearch: number | null) => {
     </div>
   </div>
 
-  <div
-    class="mt-6 p-6 rounded border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-gray-800"
-  >
+  <div class="mt-6 p-6 rounded border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-gray-800">
     <h1 class="text-3xl text-center mb-2">Kyvyt</h1>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
@@ -182,7 +198,11 @@ const copyTitle = (selectedSearch: number | null) => {
                   v-for="n in 5"
                   :key="n"
                   class="inline-block w-2.5 h-2.5 rounded-full"
-                  :class="n <= settingsStore.settings[feature.name] ? 'bg-[var(--color11)]' : 'bg-gray-800'"
+                  :class="
+                    n <= settingsStore.settings[feature.name]
+                      ? 'bg-[var(--color11)]'
+                      : 'bg-gray-800'
+                  "
                 />
               </span>
             </span>
@@ -190,6 +210,18 @@ const copyTitle = (selectedSearch: number | null) => {
         </div>
       </div>
     </div>
+
+    <QuickMenu
+      :open="menuOpen"
+      :selected="selected"
+      @close="menuOpen = false"
+      @toggle="
+        (name) => {
+          clickButton(name)
+          menuOpen = false
+        }
+      "
+    />
 
     <!-- Simple toast -->
     <Transition name="toast-fade">
