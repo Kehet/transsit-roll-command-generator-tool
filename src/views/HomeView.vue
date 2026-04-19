@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { kyvyt, ominaisuudet } from '@/layout'
+import { kyvyt, ominaisuudet, presets, type PresetContext } from '@/layout'
 import type { Settings } from '@/stores/settings'
 import { useSettingsStore } from '@/stores/settings'
 import FenButton from '@/components/FenButton.vue'
@@ -53,6 +53,15 @@ const clickButton = (name: keyof Settings) => {
   }
 
   title.value = makeTitle()
+}
+
+const applyPreset = (preset: { features: Array<keyof Settings>; onAfterApply?: (ctx: PresetContext) => void }) => {
+  selected.value = [...preset.features]
+  if (preset.onAfterApply) {
+    preset.onAfterApply({ setSearch: copyTitle })
+  } else {
+    title.value = makeTitle()
+  }
 }
 
 const reset = () => {
@@ -142,6 +151,20 @@ const copyTitle = (selectedSearch: number | null) => {
       <div class="flex flex-col sm:flex-row gap-2 md:gap-x-6">
         <FenButton @click="copyTitle(null)" class="w-full">Ilman hakua</FenButton>
         <FenButton @click="reset" class="w-full">Tyhjennä valinta</FenButton>
+      </div>
+
+      <h2 class="text-2xl mb-2">Pikavalinnat</h2>
+
+      <div v-if="presets.length > 0" class="flex flex-wrap gap-2 md:gap-x-6">
+        <FenButton
+          v-for="preset in presets"
+          :key="preset.label"
+          @click="applyPreset(preset)"
+          :kind="selected.length === preset.features.length && preset.features.every((f) => selected.includes(f)) ? 'danger' : 'default'"
+          class="flex-1 min-w-[16rem]"
+        >
+          {{ preset.label }}
+        </FenButton>
       </div>
     </div>
   </div>

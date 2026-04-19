@@ -11,6 +11,48 @@ type MainCategory = {
   features: Feature[]
 }
 
+export type PresetContext = {
+  setSearch: (value: number) => void
+}
+
+type Preset = {
+  label: string
+  features: Array<keyof Settings>
+  onAfterApply?: (ctx: PresetContext) => void
+}
+
+export const presets: Preset[] = [
+  {
+    label: 'Inikka',
+    features: ['ketteryys', 'valppaus'],
+    onAfterApply: ({ setSearch }) => setSearch(4)
+  },
+  {
+    label: 'Havainnointi+valppaus',
+    features: ['havainnointi', 'valppaus']
+  },
+  {
+    label: 'Havainnointi+empatia',
+    features: ['havainnointi', 'empatia']
+  },
+  {
+    label: 'Karismaattisuus+suostuttelu',
+    features: ['karismaattisuus', 'suostuttelu']
+  },
+  {
+    label: 'Nyrkkitappelu osum.',
+    features: ['ketteryys', 'tappeleminen']
+  },
+  {
+    label: 'Lähiaseet osum.',
+    features: ['ketteryys', 'lahiaseet']
+  },
+  {
+    label: 'Kantama-aseet osum.',
+    features: ['ketteryys', 'kantamaaseet']
+  },
+]
+
 export const ominaisuudet: MainCategory[] = [
   {
     label: 'Fyysisyys',

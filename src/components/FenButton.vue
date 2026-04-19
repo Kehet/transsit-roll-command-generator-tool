@@ -18,7 +18,7 @@ withDefaults(
     :class="{
       'bg-[var(--color12)] dark:bg-[var(--color4)] hover:brightness-110 focus:ring-[var(--color12)] dark:focus:ring-[var(--color4)]':
         kind === 'default',
-      'bg-[var(--color9)] dark:bg-[var(--color1)] hover:brightness-110 focus:ring-[var(--color9)] dark:focus:ring-[var(--color1)]':
+      'bg-[var(--color9)] dark:bg-[var(--color1)] hover:brightness-110 focus:ring-[var(--color9)] dark:focus:ring-[var(--color1)] shadow-[inset_0_2px_6px_rgba(0,0,0,0.5)]':
         kind === 'danger'
     }"
   >
